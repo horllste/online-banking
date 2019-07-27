@@ -123,7 +123,7 @@
                                                 
                                                 @if(count($bankTransactions) == 0)
                                                     <tr>
-                                                        <td colspan="7" class="span4 text-center text-muted"> Nothing Found</td>
+                                                        <td colspan="7" class="span4 text-center text-muted"> No Transaction Found</td>
                                                     </tr>
                                                 @endif
 

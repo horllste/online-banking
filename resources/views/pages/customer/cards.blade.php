@@ -89,7 +89,7 @@
         <div class="row">
             @foreach ($cards as $card)
             
-                <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
 
                     <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                         <div class="flipper">
@@ -100,7 +100,7 @@
                                         {{-- Card Balance --}}
                                         <div class="text-right h5 mt-2"> {{ $card->currency->symbol." ".$card->available_balance }}</div>
                                         {{-- Card Number Part --}}
-                                        <div class="text-center h4 m-4 mt-5" style="letter-spacing: 5px;"> {!! $card->formatednumber !!}</div>
+                                        <div class="text-center h5 m-4 mt-5" style="letter-spacing: 5px;"> {!! $card->formatednumber !!}</div>
                                         <div class="m-4 mt-5 mb-2">
                                             {{-- Bottom Part of the card --}}
                                             <div class="row">
@@ -124,7 +124,9 @@
                                 </div>
                             </div>
                             <div class="back">
+
                                 <!-- back content -->
+
                                 <div class="card {{ $card->card_type->style }}" style="border-radius:10px !important">
                                     <div class="card-body">
                                         {{-- Card Balance --}}
@@ -160,8 +162,14 @@
                                         </div>                            
                                     </div>
                                 </div>
+
+
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="text-right">
+                        <a href="{{ route('card_transactions', $card->id) }}" class="btn btn-sm btn-primary rounded">Transactions</a>
                     </div>
 
                 </div>

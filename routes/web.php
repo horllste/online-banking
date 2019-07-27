@@ -11,8 +11,15 @@
 |
 */
 
-//Customers Web Route File
+//SandBox Section
+Route::get('/sandbox/send/sms', function () {
+    return view('sandbox.sms');
+})->name("send_sms_sandbox");
+Route::post('/sandbox/process/sms','SandBox\SmsController@processMessage')->name('process_sms_sandbox');
 
+
+
+//Customers Web Route File
 
 Route::get('/login', function () {
     return view('auth.customer.login');
@@ -47,6 +54,9 @@ Route::group(array('middleware' => 'auth'), function(){
     
     //Cards Management
     Route::get('/cards','Customer\CardController@index')->name('cards');
-
+    Route::get('/card/transactions/{id}','Customer\CardTransactionController@show')->name('card_transactions');
+    
+    //Profile Management
+    Route::get('/profile','Customer\CardController@index')->name('profile');
 
 });

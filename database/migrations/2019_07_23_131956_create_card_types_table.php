@@ -17,6 +17,7 @@ class CreateCardTypesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('picture')->nullable();
+            $table->string('style')->default('bg-card');
             $table->timestamps();
         });
     }

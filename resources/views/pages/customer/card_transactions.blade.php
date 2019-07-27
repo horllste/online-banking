@@ -1,6 +1,6 @@
 @extends('layouts.customer.master')
 
-@section('title', 'Account Transactions')
+@section('title', 'Card Transactions')
 
 @section('content')
 
@@ -18,9 +18,8 @@
                     <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Bank Account Transactions</h4>
-                                    <h6 class="card-subtitle">All Bank Account Transaction Would Appear Here</h6>
-                                    <pre></pre>
+                                    <h4 class="card-title">Transactions</h4>
+                                    <h6 class="card-subtitle">&nbsp;</h6>
                                 
                                     <div class="table-responsive">
                                         <table class="table table-hover">
@@ -28,8 +27,6 @@
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Date</th>
-                                                    <th scope="col">Bank</th>
-                                                    <th scope="col">Account No</th>
                                                     <th scope="col">Amount</th>
                                                     <th scope="col">Transaction Code</th>
                                                     <th scope="col">Narration</th>
@@ -39,25 +36,24 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($bankTransactions as $bankTransaction)
+                                                @foreach ($cardTransactions as $cardTransaction)
                                                     <tr>
                                                         <th scope="row">{{ $loop->iteration }}</th>
                                                         <td>
-                                                            <div title="{{ $bankTransaction->created_at->format('l jS \\of F Y h:i:s A') }}"> 
-                                                                {{ $bankTransaction->created_at->format('d/m/Y') }}
+                                                            <div title="{{ $cardTransaction->created_at->format('l jS \\of F Y h:i:s A') }}"> 
+                                                                {{ $cardTransaction->created_at->format('d/m/Y') }}
                                                             </div>
                                                         </td>
-                                                        <td>{{ $bankTransaction->bank_account->bank->name }}</td>
-                                                        <td>{{ $bankTransaction->bank_account->number }}</td>
-                                                        <td>{{ $bankTransaction->bank_account->bank_location->currency->symbol." ".$bankTransaction->amount }}</td>
-                                                        <td>{{ $bankTransaction->transaction_code }}</td>
-                                                        <td>{{ ucfirst($bankTransaction->narration) }}</td>
+                                                        <td>{{ $cardTransaction->card->currency->symbol." ".$cardTransaction->amount }}</td>
+                                                        {{-- <td>{{ $cardTransaction->card_type->currency->symbol." ".$cardTransaction->amount }}</td> --}}
+                                                        <td>{{ $cardTransaction->transaction_code }}</td>
+                                                        <td>{{ ucfirst($cardTransaction->narration) }}</td>
                                                         <td>
 
-                                                            @if($bankTransaction->type == "credit")
-                                                                <span class="btn btn-sm btn-success"> <i class="mdi mdi-debug-step-into"></i> {{ ucfirst($bankTransaction->type) }} </span>
-                                                            @elseif($bankTransaction->type == "debit")
-                                                                <span class="btn btn-sm btn-danger"> <i class="mdi mdi-debug-step-out"></i> {{ ucfirst($bankTransaction->type) }} </span>
+                                                            @if($cardTransaction->type == "credit")
+                                                                <span class="btn btn-sm btn-success"> <i class="mdi mdi-debug-step-into"></i> {{ ucfirst($cardTransaction->type) }} </span>
+                                                            @elseif($cardTransaction->type == "debit")
+                                                                <span class="btn btn-sm btn-danger"> <i class="mdi mdi-debug-step-out"></i> {{ ucfirst($cardTransaction->type) }} </span>
                                                             @else
 
                                                             @endif
@@ -65,19 +61,19 @@
                                                         </td>
                                                         <td>
 
-                                                            @if($bankTransaction->status == "successful")
-                                                                <span class="text-success"> <i class="mdi mdi-check-all"></i> {{ ucfirst($bankTransaction->status) }} </span>
-                                                            @elseif($bankTransaction->status == "pending")
-                                                                <span class="text-warning"> <i class="mdi mdi-clock"></i> {{ ucfirst($bankTransaction->status) }} </span>
-                                                            @elseif($bankTransaction->status == "failed")
-                                                                <span class="text-danger"> <i class="mdi mdi-close"></i> {{ ucfirst($bankTransaction->status) }} </span>
+                                                            @if($cardTransaction->status == "successful")
+                                                                <span class="text-success"> <i class="mdi mdi-check-all"></i> {{ ucfirst($cardTransaction->status) }} </span>
+                                                            @elseif($cardTransaction->status == "pending")
+                                                                <span class="text-warning"> <i class="mdi mdi-clock"></i> {{ ucfirst($cardTransaction->status) }} </span>
+                                                            @elseif($cardTransaction->status == "failed")
+                                                                <span class="text-danger"> <i class="mdi mdi-close"></i> {{ ucfirst($cardTransaction->status) }} </span>
                                                             @endif
 
                                                         </td>
                                                     </tr>
                                                 @endforeach
                                                 
-                                                @if(count($bankTransactions) == 0)
+                                                @if(count($cardTransactions) == 0)
                                                     <tr>
                                                         <td colspan="7" class="span4 text-center text-muted"> No Transaction Found</td>
                                                     </tr>
@@ -88,7 +84,7 @@
                                     </div>
 
                                     <div class="float-right">
-                                            {{ $bankTransactions->links() }}
+                                            {{ $cardTransactions->links() }}
                                         </div>
                                 </div>
                             </div>
