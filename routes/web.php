@@ -57,6 +57,6 @@ Route::group(array('middleware' => 'auth'), function(){
     Route::get('/card/transactions/{id}','Customer\CardTransactionController@show')->name('card_transactions');
     
     //Profile Management
-    Route::get('/profile','Customer\CardController@index')->name('profile');
+    Route::get('/profile','Customer\ProfileController@index')->name('profile');
 
 });

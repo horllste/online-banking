@@ -24,11 +24,12 @@ class CreateUsersTable extends Migration
             $table->string('phone_number');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('country_id')->unsigned();
+            $table->unsignedBigInteger('country_id');
             $table->string('description')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
