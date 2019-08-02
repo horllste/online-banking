@@ -14,9 +14,7 @@ class ProfileController extends Controller
     function index(Request $request){
         
         $user = User::with('country')->find(Auth::id());
-        return $user;
-        view('pages.customer.profile', compact($data));
-        return $request;
+        return view('pages.customer.profile', compact('user'));
 
     }
 

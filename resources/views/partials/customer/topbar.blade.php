@@ -40,7 +40,7 @@
                         
                     </ul>
                     <ul class="navbar-nav float-right">
-                        <li class="nav-item"> <a class="nav-link"><i class="fa fa-bell"></i></a> </li>   
+                        {{-- <li class="nav-item"> <a class="nav-link"><i class="fa fa-bell"></i></a> </li> --}}
                         <li class="nav-item"> <a class="nav-link"><i class="fa fa-envelope"></i></a> </li>   
                     </ul>
                     <!-- ============================================================== -->

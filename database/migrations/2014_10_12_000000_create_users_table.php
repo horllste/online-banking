@@ -20,12 +20,15 @@ class CreateUsersTable extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->string('email')->unique();
+            $table->string('alt_email')->unique()->nullable();
             $table->string('username')->unique();
             $table->string('phone_number');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('country_id');
             $table->string('description')->nullable();
+            $table->string('address')->nullable();
+            $table->string('is_active')->default('1');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

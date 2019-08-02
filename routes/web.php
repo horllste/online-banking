@@ -59,4 +59,15 @@ Route::group(array('middleware' => 'auth'), function(){
     //Profile Management
     Route::get('/profile','Customer\ProfileController@index')->name('profile');
 
+    //Setting Management
+    Route::get('/settings','Customer\SettingsController@index')->name('settings');
+    Route::post('/settings','Customer\SettingsController@update')->name('update_settings');
+    
+
+    //Inbox Messages
+    //Setting Management
+    Route::get('/inbox','Customer\MessageController@index')->name('inbox');
+    Route::post('/send/message','Customer\MessageController@send')->name('send_message');
+
+
 });
