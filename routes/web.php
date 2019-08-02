@@ -44,30 +44,30 @@ Route::post('/set/password','Auth\AuthController@set_account_password')->name('s
 
 Route::group(array('middleware' => 'auth'), function(){
 
-    Route::get('/dashboard','Customer\DashboardController@index');
-    Route::get('/','Customer\DashboardController@index')->name('dashboard');
+    Route::get('/dashboard','DashboardController@index');
+    Route::get('/','DashboardController@index')->name('dashboard');
 
     //Bank Account Management
-    Route::get('/accounts','Customer\BankAccountController@index')->name('accounts');
-    Route::get('/account/transactions/{id}','Customer\BankAccountController@transactions')->name('account_history');
-    Route::get('/transactions','Customer\BankAccountController@all_transactions')->name('all_transactions');
+    Route::get('/accounts','BankAccountController@index')->name('accounts');
+    Route::get('/account/transactions/{id}','BankAccountController@transactions')->name('account_history');
+    Route::get('/transactions','BankAccountController@all_transactions')->name('all_transactions');
     
     //Cards Management
-    Route::get('/cards','Customer\CardController@index')->name('cards');
-    Route::get('/card/transactions/{id}','Customer\CardTransactionController@show')->name('card_transactions');
+    Route::get('/cards','CardController@index')->name('cards');
+    Route::get('/card/transactions/{id}','CardTransactionController@show')->name('card_transactions');
     
     //Profile Management
-    Route::get('/profile','Customer\ProfileController@index')->name('profile');
+    Route::get('/profile','ProfileController@index')->name('profile');
 
     //Setting Management
-    Route::get('/settings','Customer\SettingsController@index')->name('settings');
-    Route::post('/settings','Customer\SettingsController@update')->name('update_settings');
+    Route::get('/settings','SettingsController@index')->name('settings');
+    Route::post('/settings','SettingsController@update')->name('update_settings');
     
 
     //Inbox Messages
     //Setting Management
-    Route::get('/inbox','Customer\MessageController@index')->name('inbox');
-    Route::post('/send/message','Customer\MessageController@send')->name('send_message');
+    Route::get('/inbox','MessageController@index')->name('inbox');
+    Route::post('/send/message','MessageController@send')->name('send_message');
 
 
 });

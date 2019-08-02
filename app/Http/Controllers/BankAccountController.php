@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +19,7 @@ class BankAccountController extends Controller
         ->orderBy('id','DESC')
         ->where('user_id',Auth::id())->paginate(9);
 
-        return view('pages.customer.accounts', compact('bankAccounts'));
+        return view('pages.accounts', compact('bankAccounts'));
 
     }
 
@@ -36,7 +36,7 @@ class BankAccountController extends Controller
             ->where('bank_account_id',$id)
             ->orderBy('id','DESC')
             ->paginate(20);
-            return view('pages.customer.transactions', compact('bankAccount', 'bankTransactions'));
+            return view('pages.transactions', compact('bankAccount', 'bankTransactions'));
 
         }else{
 
@@ -54,7 +54,7 @@ class BankAccountController extends Controller
         ->orderBy('id','DESC')
         ->paginate(20);
         
-        return view('pages.customer.all_transactions', compact('bankTransactions'));
+        return view('pages.all_transactions', compact('bankTransactions'));
 
     }
 

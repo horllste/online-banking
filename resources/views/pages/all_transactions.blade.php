@@ -1,4 +1,4 @@
-@extends('layouts.customer.master')
+@extends('layouts.master')
 
 @section('title', 'Account Transactions')
 

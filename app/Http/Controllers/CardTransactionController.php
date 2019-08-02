@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,7 +29,7 @@ class CardTransactionController extends Controller
             ->where('card_id',$id)
             ->paginate(20);
 
-            return view('pages.customer.card_transactions', compact('cardTransactions'));
+            return view('pages.card_transactions', compact('cardTransactions'));
 
         }else{
 

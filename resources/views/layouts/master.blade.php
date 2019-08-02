@@ -13,7 +13,7 @@
     <title>{{ config('app.name') }} - @yield('title')</title>
 
     <!-- Include styles  -->
-    @include('partials.customer.styles')
+    @include('partials.styles')
     @yield('custom-style')
     <!-- End styles -->
 </head>
@@ -35,14 +35,14 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        @include('partials.customer.topbar')
+        @include('partials.topbar')
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        @include('partials.customer.sidebar')
+        @include('partials.sidebar')
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -75,7 +75,7 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                @include('partials.customer.alert')
+                @include('partials.alert')
                 @yield('content')
             </div>
             <!-- ============================================================== -->
@@ -84,7 +84,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            @include('partials.customer.footer')
+            @include('partials.footer')
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -104,7 +104,7 @@
     <!-- End Ziggy -->
 
     {{-- Scripts --}}
-    @include('partials.customer.scripts')
+    @include('partials.scripts')
     {{-- End Scripts --}}
 
     

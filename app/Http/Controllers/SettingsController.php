@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +19,7 @@ class SettingsController extends Controller
             $setting->user_id = Auth::id();
             $setting->save();
         }
-        return view('pages.customer.settings',  compact('setting'));
+        return view('pages.settings',  compact('setting'));
     }
 
     function update(Request $request){

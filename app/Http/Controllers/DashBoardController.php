@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -50,9 +50,17 @@ class DashBoardController extends Controller
         ///END OF BANK EXPENSES
 
         
-        return view('pages.customer.dashboard', compact('bankAccounts', 'bankDepositAmounts', 'bankDepositDates', 'bankExpensesAmounts', 'bankExpensesDates'));
+        return view('pages.dashboard', compact('bankAccounts', 'bankDepositAmounts', 'bankDepositDates', 'bankExpensesAmounts', 'bankExpensesDates'));
 
     }
 
+
+
+
+
+
+
+
+    
 
 }

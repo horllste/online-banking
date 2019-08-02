@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +14,7 @@ class ProfileController extends Controller
     function index(Request $request){
         
         $user = User::with('country')->find(Auth::id());
-        return view('pages.customer.profile', compact('user'));
+        return view('pages.profile', compact('user'));
 
     }
 
