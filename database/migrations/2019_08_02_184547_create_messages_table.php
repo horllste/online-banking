@@ -18,7 +18,7 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('sender_id');
             $table->unsignedBigInteger('receiver_id');
             $table->string('subject');
-            $table->string('body');
+            $table->text('body');
             $table->enum('status',['read','unread','pending'])->default('unread');
             $table->timestamps();
             $table->softDeletes();

@@ -49,11 +49,11 @@
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <div class="page-wrapper ">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb">
+            <div class="page-breadcrumb d-print-none">
                 <div class="row align-items-center">
                     <div class="col-12">
                         <h4 class="page-title">@yield('title')</h4>
