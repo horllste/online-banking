@@ -49,8 +49,11 @@ Route::group(array('middleware' => 'auth'), function(){
 
     //Bank Account Management
     Route::get('/accounts','BankAccountController@index')->name('accounts');
+    Route::post('/account','BankAccountController@store')->name('account');
     Route::get('/account/transactions/{id}','BankAccountController@transactions')->name('account_history');
     Route::get('/transactions','BankAccountController@all_transactions')->name('all_transactions');
+    Route::post('/transaction','BankAccountController@storeTransaction')->name('add_bank_transaction');
+    
     
     //Cards Management
     Route::get('/cards','CardController@index')->name('cards');
