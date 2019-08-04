@@ -20,27 +20,53 @@ class MessageController extends Controller
         
         $messages = Message::with('sender','receiver')->where('sender_id',Auth::id())
         ->orWhere('receiver_id',Auth::id())->paginate(20);
-        return view('pages.message',compact('messages'));
+
+        $users = User::role('customer-care')->get();
+
+        return view('pages.message',compact('messages','users'));
 
     }
 
     function show(Request $request, $id){
         
-        $message = Message::with('sender','receiver')->where('sender_id',Auth::id())
-        ->orWhere('receiver_id',Auth::id())
-        ->where('id',$id)->first();
+        $message = Message::with('sender','receiver')->find($id);
+        
+        if( !empty($message) && ( $message->sender_id == Auth::id() || $message->receiver_id == Auth::id() ) ){
 
-        $message->status = "read";
-        $message->save();
+            if(Auth::id() == $message->recipient_id){
+                $message->status = "read";
+                $message->save();
+            }
 
-        return view('pages.view_message',compact('message'));
+            return view('pages.view_message',compact('message'));
+
+        }else{
+
+            return redirect()->route('inbox')->with('error', 'We encounter an error while trying to display your Message. Please Try Again Later'); 
+
+        }
 
     }
 
-    function send(){
+    function store(Request $request){
 
-        $users = User::role('customer-care')->get();
-        return view('pages.new_message',compact('users'));
+        $user = User::role('customer-care')
+        ->where('id',$request->recipient)->first();
+
+        if( !empty($user) ){
+
+            $message = new Message();
+            $message->subject = $request->subject;
+            $message->body = $request->body;
+            $message->sender_id = Auth::id();
+            $message->receiver_id = $request->recipient;
+            $message->status = "unread";
+            $message->save();
+
+            return redirect()->route('inbox')->with('success', 'Message Sent Successfully'); 
+        }else{
+            return redirect()->route('inbox')->with('error', 'We encounter an error while trying to send your Message. Please Try Again Later'); 
+        }
 
     }
 

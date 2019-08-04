@@ -39,7 +39,7 @@ class AuthController extends Controller
             $user = Auth::user();
             
             //Check if user is a customer or admin
-            if($user->hasRole(env('CUSTOMER_ROLE','Customer'))){
+            if( $user->can('login') ){
                 // Log them in                
                 return redirect('/dashboard');
             }else {
@@ -63,9 +63,7 @@ class AuthController extends Controller
         }else{
             return "username";
         }
-        // return filter_var($loginValue, FILTER_VALIDATE_EMAIL ) 
-        //     ? 'email' 
-        //     : ( (preg_match('%^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$%i', $loginValue)) ? 'mobile' : 'username' );
+
     }
 
     function logout(Request $request){

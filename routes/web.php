@@ -67,8 +67,7 @@ Route::group(array('middleware' => 'auth'), function(){
     //Inbox Messages
     Route::get('/inbox','MessageController@index')->name('inbox');
     Route::get('/inbox/{id}','MessageController@show')->name('read_message');
-    Route::get('/send/message','MessageController@send')->name('send_message');
-    Route::post('/send/message','MessageController@process_sending')->name('send_message');
+    Route::post('/send/message','MessageController@store')->name('send_message');
 
 
 });
