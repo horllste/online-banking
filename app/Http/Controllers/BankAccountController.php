@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BankAccount;
-use Auth,DB;
+use Auth,DB,Log;
 use App\Models\BankTransaction;
 USE Carbon\Carbon;
+use App\Models\User;
+use App\Models\Bank;
 
 
 
@@ -16,7 +18,7 @@ class BankAccountController extends Controller
 
     public function index(){
         
-        $bankAccounts = BankAccount::withTrashed()->with('bank','bank_location')
+        $bankAccounts = BankAccount::with('bank','bank_location')
         ->orderBy('id','DESC')
         ->where('user_id',Auth::id())->paginate(9);
 
@@ -25,7 +27,10 @@ class BankAccountController extends Controller
             ->orderBy('id','DESC')->paginate(9);
         }
 
-        return view('pages.accounts', compact('bankAccounts'));
+        $users = User::role('Customer')->get();
+        $banks = Bank::with('location')->get();
+    
+        return view('pages.accounts', compact('bankAccounts','users','banks'));
 
     }
 
@@ -147,5 +152,142 @@ class BankAccountController extends Controller
     
     }
 
+    function store(Request $request){
+
+        DB::beginTransaction();
+
+        try{
+
+            if( Auth::user()->can('add-account') ){
+
+                $bankAccount = new BankAccount();
+                $bankAccount->name = $request->name;
+                $bankAccount->number = $request->number;
+                $bankAccount->user_id = $request->user_id;
+                $bankAccount->available_balance = $request->available_balance;
+                $bankAccount->ledger_balance = $request->ledger_balance;
+                $bankAccount->bank_id = $request->bank_id;
+                $bankAccount->bank_location_id = $request->bank_location_id;
+                $bankAccount->save();
+                
+                DB::commit();
+                return redirect()->route('accounts')->with('success', 'Bank Account Addition Successful'); 
+            
+            }else{
+            
+                DB::rollBack();
+                return redirect()->route('accounts')->with('error', 'Bank Account Addition Failed. UnAuthorized Action Failed');
+
+            }
+
+        }catch(\Exception $ex){
+            
+            Log::info($ex->getMessage());
+            DB::rollBack();
+            return redirect()->route('accounts')->with('error', 'Bank Account Addition Failed. Please Try Again Later'); 
+
+        }
+        
+    }
+
+
+    function update(Request $request, $id){
+
+        DB::beginTransaction();
+
+        try{
+
+            if( Auth::user()->can('edit-account') ){
+
+                $bankAccount = BankAccount::findOrfail($id);
+                $bankAccount->name = $request->name;
+                $bankAccount->number = $request->number;
+                $bankAccount->available_balance = $request->available_balance;
+                $bankAccount->ledger_balance = $request->ledger_balance;
+                $bankAccount->bank_id = $request->bank_id;
+                $bankAccount->bank_location_id = $request->bank_location_id;
+                $bankAccount->save();
+                
+                DB::commit();
+                return redirect()->route('accounts')->with('success', 'Bank Account Updated Successfully'); 
+
+            }else{
+                
+                DB::rollBack();
+                return redirect()->route('accounts')->with('error', 'Bank Account Update Failed. UnAuthorized Action Failed');
+
+            }
+
+        }catch(\Exception $ex){
+            
+            Log::info($ex->getMessage());
+            DB::rollBack();
+            return redirect()->route('accounts')->with('error', 'Bank Account Update Failed. Please Try Again Later'); 
+
+        }
+
+    } 
+
+    function destory(Request $request, $id){
+
+        DB::beginTransaction();
+
+        try{
+
+            if( Auth::user()->can('delete-account') ){
+
+                $bankAccount = BankAccount::findOrfail($id);
+                $bankAccount->delete();
+                
+                DB::commit();
+                return redirect()->route('accounts')->with('success', 'Bank Account Deletion Successfully'); 
+
+            }else{
+                
+                DB::rollBack();
+                return redirect()->route('accounts')->with('error', 'Bank Account Deletion Failed. UnAuthorized Action Failed');
+
+            }
+
+        }catch(\Exception $ex){
+            
+            Log::info($ex->getMessage());
+            DB::rollBack();
+            return redirect()->route('accounts')->with('error', 'Bank Account Deletion Failed. Please Try Again Later'); 
+
+        }
+
+    } 
+
+    function restore(Request $request, $id){
+
+        DB::beginTransaction();
+
+        try{
+
+            if( Auth::user()->can('restore-account') ){
+
+                $bankAccount = BankAccount::withTrashed()->findOrfail($id);
+                $bankAccount->restore();
+                
+                DB::commit();
+                return redirect()->route('accounts')->with('success', 'Bank Account Restore Successfully'); 
+
+            }else{
+                
+                DB::rollBack();
+                return redirect()->route('accounts')->with('error', 'Bank Account Restore Failed. UnAuthorized Action Failed');
+
+            }
+
+        }catch(\Exception $ex){
+            
+            Log::info($ex->getMessage());
+            DB::rollBack();
+            return redirect()->route('accounts')->with('error', 'Bank Account Restore Failed. Please Try Again Later'); 
+
+        }
+
+    } 
 
 }

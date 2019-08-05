@@ -33,6 +33,14 @@ class CurrenciesTableSeeder extends Seeder
                 'created_at' => '2019-07-23 08:19:21',
                 'updated_at' => '2019-07-23 08:19:21',
             ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'Ghana Cedis',
+                'symbol' => 'GHS',
+                'created_at' => '2019-07-23 08:19:21',
+                'updated_at' => '2019-07-23 08:19:21',
+            ),
         ));
         
         

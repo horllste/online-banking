@@ -37,6 +37,16 @@ class BankLocationsTableSeeder extends Seeder
                 'updated_at' => '2019-07-23 08:19:21',
                 'deleted_at' => NULL,
             ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'Accra, Ghana',
+                'bank_id' => 1,
+                'currency_id' => 2,
+                'created_at' => '2019-07-23 08:19:21',
+                'updated_at' => '2019-07-23 08:19:21',
+                'deleted_at' => NULL,
+            ),
         ));
         
         

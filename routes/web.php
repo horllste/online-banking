@@ -50,6 +50,10 @@ Route::group(array('middleware' => 'auth'), function(){
     //Bank Account Management
     Route::get('/accounts','BankAccountController@index')->name('accounts');
     Route::post('/account','BankAccountController@store')->name('account');
+    Route::post('/account/update/{id}','BankAccountController@update')->name('update_account');
+    Route::get('/account/delete/{id}','BankAccountController@destory')->name('delete_account');
+    Route::get('/account/restore/{id}','BankAccountController@restore')->name('restore_account');
+    
     Route::get('/account/transactions/{id}','BankAccountController@transactions')->name('account_history');
     Route::get('/transactions','BankAccountController@all_transactions')->name('all_transactions');
     Route::post('/transaction','BankAccountController@storeTransaction')->name('add_bank_transaction');

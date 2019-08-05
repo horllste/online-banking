@@ -113,6 +113,22 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-08-04 04:18:00',
                 'updated_at' => '2019-08-04 04:18:00',
             ),
+            12 => 
+            array (
+                'id' => 13,
+                'name' => 'delete-account',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-05 06:16:00',
+                'updated_at' => '2019-08-05 06:16:00',
+            ),
+            13 => 
+            array (
+                'id' => 14,
+                'name' => 'restore-account',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-05 03:22:00',
+                'updated_at' => '2019-08-05 03:22:00',
+            ),
         ));
         
         
