@@ -185,6 +185,46 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 10:15:10',
                 'updated_at' => '2019-08-05 10:15:10',
             ),
+            21 => 
+            array (
+                'id' => 22,
+                'name' => 'list-users',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-06 07:23:18',
+                'updated_at' => NULL,
+            ),
+            22 => 
+            array (
+                'id' => 23,
+                'name' => 'add-user',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-06 07:23:18',
+                'updated_at' => '2019-08-06 07:23:18',
+            ),
+            23 => 
+            array (
+                'id' => 24,
+                'name' => 'delete-user',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-06 07:23:18',
+                'updated_at' => '2019-08-06 07:23:18',
+            ),
+            24 => 
+            array (
+                'id' => 25,
+                'name' => 'restore-user',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-06 07:23:18',
+                'updated_at' => '2019-08-06 07:23:18',
+            ),
+            25 => 
+            array (
+                'id' => 26,
+                'name' => 'edit-user',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-06 07:23:18',
+                'updated_at' => '2019-08-06 07:23:18',
+            ),
         ));
         
         

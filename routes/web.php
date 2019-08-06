@@ -82,4 +82,6 @@ Route::group(array('middleware' => 'auth'), function(){
     Route::post('/send/message','MessageController@store')->name('send_message');
 
 
+    //User Account Management
+
 });

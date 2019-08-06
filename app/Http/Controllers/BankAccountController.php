@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BankAccount;
 use Auth,DB,Log;
 use App\Models\BankTransaction;
-USE Carbon\Carbon;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Bank;
 
