@@ -61,7 +61,12 @@ Route::group(array('middleware' => 'auth'), function(){
     
     //Cards Management
     Route::get('/cards','CardController@index')->name('cards');
+    Route::post('/card','CardController@store')->name('card');
     Route::get('/card/transactions/{id}','CardTransactionController@show')->name('card_transactions');
+    Route::post('/card/update/{id}','CardController@update')->name('update_card');
+    Route::get('/card/delete/{id}','CardController@destory')->name('delete_card');
+    Route::get('/card/restore/{id}','CardController@restore')->name('restore_card');
+    Route::post('/transaction','CardTransactionController@storeTransaction')->name('add_card_transaction');
     
     //Profile Management
     Route::get('/profile','ProfileController@index')->name('profile');

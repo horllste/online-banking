@@ -18,7 +18,12 @@
                     <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Transactions</h4>
+                                    <h4 class="card-title">Transactions 
+                                        @can('add-card-transaction') 
+                                            <button type="button" data-toggle="modal" data-target="#addTransactionModal" class="btn btn-primary float-right"> Add Transaction </button> 
+                                        @endcan 
+
+                                    </h4>
                                     <h6 class="card-subtitle">&nbsp;</h6>
                                 
                                     <div class="table-responsive">
@@ -95,6 +100,119 @@
     </div>
 </div>
      
+
+
+@can('add-card-transaction')
+
+{{-- Add The Model for the transaction adding --}}
+
+<!-- Modal -->
+<div class="modal fade" id="addTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        <form method="POST" action="{{ route('add_card_transaction') }}">
+            @csrf
+            <input type="hidden" value="{{ $card->id }}" name="card_id" />
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Card Transaction</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-5">
+                
+                    <div class="form-group">
+                        <label for="transactionCodeInput">Transaction Code</label>
+                        <input type="text" class="form-control" id="transactionCodeInput" aria-describedby="transactionCodeInputHelp" name="transaction_code" required />
+                        <small id="transactionCodeInputHelp" class="form-text text-muted"><b>NB:</b> Must Important Part Of Every Transaction</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transactionNarrationInput">Narration</label>
+                        <input type="text" class="form-control" id="transactionNarrationInput" aria-describedby="transactionNarrationInputHelp" name="narration" required />
+                        <small id="transactionNarrationInputHelp" class="form-text text-muted"><b>NB:</b> Narration For Transaction should be added to make the transaction legit. Describe the Transaction</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transactionAmountInput">Amount</label>
+                        <input type="number" class="form-control" id="transactionAmountInput" aria-describedby="transactionAmountInputHelp" name="amount" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transactionDateInput">Transaction Date</label>
+                        <input type="date" class="form-control" id="transactionDateInput" aria-describedby="transactionDateInputHelp" name="date" required />
+                    </div>
+
+
+                    <label for="transactionAmountInput">Transaction Type</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="exampleRadios1" value="debit" >
+                        <label class="form-check-label" for="exampleRadios1">
+                            Debit
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="exampleRadios2" value="credit" checked>
+                        <label class="form-check-label" for="exampleRadios2">
+                            Credit
+                        </label>
+                    </div>
+
+                    <p class="mt-4">Charge Transaction From</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="balance" id="chargeRadios1" value="ledger_balance" checked>
+                        <label class="form-check-label" for="chargeRadios1">
+                            Ledger Balance
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="balance" id="chargeRadios2" value="available_balance">
+                        <label class="form-check-label" for="chargeRadios2">
+                            Available Balance
+                        </label>
+                    </div>
+
+                    <p class="mt-4">Transaction Status</p>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="statusRadios3" value="successful" checked>
+                        <label class="form-check-label" for="statusRadios3">
+                            Successful
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="statusRadios1" value="pending">
+                        <label class="form-check-label" for="statusRadios1">
+                            Pending
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="statusRadios2" value="failed">
+                        <label class="form-check-label" for="statusRadios2">
+                            Failed
+                        </label>
+                    </div>
+
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Save </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+
+@endcan
 
 @endsection
 

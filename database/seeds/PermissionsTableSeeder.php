@@ -129,6 +129,62 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 03:22:00',
                 'updated_at' => '2019-08-05 03:22:00',
             ),
+            14 => 
+            array (
+                'id' => 15,
+                'name' => 'view-all-cards',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-05 07:24:25',
+                'updated_at' => '2019-08-05 07:24:25',
+            ),
+            15 => 
+            array (
+                'id' => 16,
+                'name' => 'add-card',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-05 07:24:25',
+                'updated_at' => '2019-08-05 07:24:25',
+            ),
+            16 => 
+            array (
+                'id' => 17,
+                'name' => 'edit-card',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-05 07:24:25',
+                'updated_at' => '2019-08-05 07:24:25',
+            ),
+            17 => 
+            array (
+                'id' => 18,
+                'name' => 'delete-card',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-05 07:24:25',
+                'updated_at' => '2019-08-05 07:24:25',
+            ),
+            18 => 
+            array (
+                'id' => 19,
+                'name' => 'restore-card',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-05 07:24:25',
+                'updated_at' => '2019-08-05 07:24:25',
+            ),
+            19 => 
+            array (
+                'id' => 20,
+                'name' => 'view-card-transactions',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-05 10:28:18',
+                'updated_at' => '2019-08-05 10:28:18',
+            ),
+            20 => 
+            array (
+                'id' => 21,
+                'name' => 'add-card-transaction',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-05 10:15:10',
+                'updated_at' => '2019-08-05 10:15:10',
+            ),
         ));
         
         
