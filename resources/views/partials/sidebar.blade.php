@@ -14,6 +14,27 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('cards') }}" aria-expanded="false"><i class="mdi mdi-credit-card-multiple"></i><span class="hide-menu">Cards</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('all_transactions') }}" aria-expanded="false"><i class="mdi mdi-swap-horizontal"></i><span class="hide-menu">Transactions</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('settings') }}" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a></li>
+                        
+                        @hasanyrole('System-Admin|Admin')
+                            <hr/>
+                        @endhasanyrole
+                        
+                        @can('list-users')
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('users') }}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Users</span></a></li>
+                        @endcan
+
+                        @can('list-currencies')
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('users') }}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Users</span></a></li>
+                        @endcan
+
+                        @can('list-card-types')
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('users') }}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Users</span></a></li>
+                        @endcan
+
+                        @can('list-banks')
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('users') }}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Users</span></a></li>
+                        @endcan
+                        
                     </ul>
                     
                 </nav>

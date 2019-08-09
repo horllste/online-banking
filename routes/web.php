@@ -83,5 +83,11 @@ Route::group(array('middleware' => 'auth'), function(){
 
 
     //User Account Management
+    Route::get('/users','UserController@index')->name('users');
+    Route::get('/user/delete/{id}','UserController@destory')->name('delete_user');
+    Route::get('/user/restore/{id}','UserController@restore')->name('restore_user');
+    Route::post('/user/save','UserController@store')->name('save_user');
+    Route::post('/user/update/{id}','UserController@update')->name('edit_user');
+    
 
 });

@@ -225,6 +225,166 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-08-06 07:23:18',
                 'updated_at' => '2019-08-06 07:23:18',
             ),
+            26 => 
+            array (
+                'id' => 27,
+                'name' => 'list-currencies',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            27 => 
+            array (
+                'id' => 28,
+                'name' => 'add-currency',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            28 => 
+            array (
+                'id' => 29,
+                'name' => 'edit-currency',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            29 => 
+            array (
+                'id' => 30,
+                'name' => 'delete-currency',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            30 => 
+            array (
+                'id' => 31,
+                'name' => 'restore-currency',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            31 => 
+            array (
+                'id' => 32,
+                'name' => 'list-card-types',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            32 => 
+            array (
+                'id' => 33,
+                'name' => 'add-card-type',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            33 => 
+            array (
+                'id' => 34,
+                'name' => 'delete-card-type',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            34 => 
+            array (
+                'id' => 35,
+                'name' => 'edit-card-type',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            35 => 
+            array (
+                'id' => 36,
+                'name' => 'restore-card-type',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            36 => 
+            array (
+                'id' => 37,
+                'name' => 'list-banks',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            37 => 
+            array (
+                'id' => 38,
+                'name' => 'add-bank',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            38 => 
+            array (
+                'id' => 39,
+                'name' => 'delete-bank',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            39 => 
+            array (
+                'id' => 40,
+                'name' => 'edit-bank',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            40 => 
+            array (
+                'id' => 41,
+                'name' => 'restore-bank',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            41 => 
+            array (
+                'id' => 42,
+                'name' => 'list-bank-locations',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            42 => 
+            array (
+                'id' => 43,
+                'name' => 'add-bank-location',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            43 => 
+            array (
+                'id' => 44,
+                'name' => 'delete-bank-location',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            44 => 
+            array (
+                'id' => 45,
+                'name' => 'edit-bank-location',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
+            45 => 
+            array (
+                'id' => 46,
+                'name' => 'restore-bank-location',
+                'guard_name' => 'web',
+                'created_at' => '2019-08-09 13:22:20',
+                'updated_at' => '2019-08-09 13:22:20',
+            ),
         ));
         
         

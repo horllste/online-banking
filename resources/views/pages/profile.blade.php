@@ -58,7 +58,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <p>
                                 Status<br/>
-                                @if($user->is_active)
+                                @if( empty($user->deleted_at) )
                                     <i class="dot bg-success"> </i><b> &nbsp; &nbsp;Active</b>
                                 @else
                                     <i class="dot bg-danger"> </i><b> &nbsp; &nbsp;De-activated</b>
