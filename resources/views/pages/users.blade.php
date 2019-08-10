@@ -104,7 +104,11 @@
                                                             @else
                                                                 <button type="button" class="btn btn-xs btn-info" >Current User</button>
                                                             @endif
+                                                            
 
+                                                            @can('change-password')
+                                                                <button type="button" class="btn btn-xs btn-secondary changePasswordUserModal" data-toggle="modal" data-target="#changePasswordUserModal" value="{{ $user->id }}"> <i class="fa fa-key"></i> </button>
+                                                            @endcan
                                                             
                                                         </td>
                                                     </tr>
@@ -208,8 +212,6 @@
     </div>
 </div>
 
-
-
 <!-- Add User Modal -->
 <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -228,7 +230,7 @@
             <div class="modal-body p-4">
                 
                 <div class="custom-file mb-3">
-                    <input type="file" class="custom-file-input" id="newProfileFile" name="picture">
+                    <input type="file" class="custom-file-input" id="newProfileFile" name="picture" accept="image/*">
                     <label class="custom-file-label" for="newProfileFile">Choose Profile Picture</label>
                 </div>
 
@@ -337,7 +339,7 @@
                 <div class="modal-body p-4">
                     
                     <div class="custom-file mb-3">
-                        <input type="file" class="custom-file-input" id="customFile" name="picture">
+                        <input type="file" class="custom-file-input" id="customFile" name="picture" accept="image/*">
                         <label class="custom-file-label" for="customFile">Choose Profile Picture</label>
                     </div>
     
@@ -401,7 +403,44 @@
             </form>
     
         </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+    
+            <form method="POST" id="changePasswordForm">
+                
+                @csrf
+    
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change User Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" required />
+                    </div>
+    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                </div>
+            </form>
+    
+        </div>
     </div>
+
+
+
+
 @endsection
 
 @section('custom-script')
@@ -486,6 +525,16 @@ $(".editUserModal").click(function(){
 
     
 
+
+});
+
+$(".changePasswordUserModal").click(function(){
+
+    var user_id = $(this).val();
+    
+    var updateRoute = route('change_password', user_id );
+    $('#changePasswordForm').attr('action', ''+updateRoute+'');
+    $('#changePasswordModal').modal('toggle');
 
 });
 

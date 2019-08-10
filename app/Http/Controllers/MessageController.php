@@ -21,7 +21,12 @@ class MessageController extends Controller
         $messages = Message::with('sender','receiver')->where('sender_id',Auth::id())
         ->orWhere('receiver_id',Auth::id())->paginate(20);
 
+        
         $users = User::role('customer-care')->get();
+
+        if( Auth::user()->role('System-Admin') ){
+            $users = User::get();
+        }
 
         return view('pages.message',compact('messages','users'));
 
@@ -52,6 +57,10 @@ class MessageController extends Controller
 
         $user = User::role('customer-care')
         ->where('id',$request->recipient)->first();
+
+        if( Auth::user()->role('System-Admin') ){
+            $user = User::findOrfail($request->recipient);
+        }
 
         if( !empty($user) ){
 

@@ -59,6 +59,22 @@ class UserController extends Controller
                 $user->description = $request->description;
                 $user->address = $request->address;
 
+                // Check if a profile image has been uploaded
+                if ($request->has('picture')) {
+                    // Get image file
+                    $image = $request->file('picture');
+                    // Make a image name based on user name and current timestamp
+                    $name = str_slug($request->input('name')).'_'.time();
+                    // Define folder path
+                    $folder = '/uploads/user/profile/';
+                    // Make a file path where image will be stored [ folder path + file name + file extension]
+                    $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+                    // Upload image
+                    $this->uploadOne($image, $folder, 'public', $name);
+                    // Set user profile image path in database to filePath
+                    $user->picture = $filePath;
+                }
+
                 if( !empty($request->username) ){
                     $user->username = $request->username;
                 }else{
@@ -187,7 +203,28 @@ class UserController extends Controller
 
     }
 
+    public function change_password(Request $request, $id){
 
+        try{
+
+            if( Auth::user()->can('change-password') ){
+
+                $user = User::withTrashed()->findOrfail($id);
+                $user->password = Hash::make($request->password);
+                $user->Save();
+                return back()->withInput()->with('success', 'User Account Password Change Successful');
+    
+            }else if(Auth::id() == $id){
+    
+                return back()->withInput()->with('error', 'User Account Password Change Failed. Current User Account Can\'t be restored');
+    
+            }
+
+        }catch(\Exception $ex){
+            return back()->withInput()->with('error', 'User Account Password Change Failed. UnAuthorized Action Failed');
+        }
+
+    }
 
     public function generateUsername( $country_id ){
     

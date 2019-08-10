@@ -56,7 +56,7 @@ Route::group(array('middleware' => 'auth'), function(){
     
     Route::get('/account/transactions/{id}','BankAccountController@transactions')->name('account_history');
     Route::get('/transactions','BankAccountController@all_transactions')->name('all_transactions');
-    Route::post('/transaction','BankAccountController@storeTransaction')->name('add_bank_transaction');
+    Route::post('/bank/transaction','BankAccountController@storeTransaction')->name('add_bank_transaction');
     
     
     //Cards Management
@@ -66,7 +66,7 @@ Route::group(array('middleware' => 'auth'), function(){
     Route::post('/card/update/{id}','CardController@update')->name('update_card');
     Route::get('/card/delete/{id}','CardController@destory')->name('delete_card');
     Route::get('/card/restore/{id}','CardController@restore')->name('restore_card');
-    Route::post('/transaction','CardTransactionController@storeTransaction')->name('add_card_transaction');
+    Route::post('/card/ransaction','CardTransactionController@storeTransaction')->name('add_card_transaction');
     
     //Profile Management
     Route::get('/profile','ProfileController@index')->name('profile');
@@ -88,6 +88,33 @@ Route::group(array('middleware' => 'auth'), function(){
     Route::get('/user/restore/{id}','UserController@restore')->name('restore_user');
     Route::post('/user/save','UserController@store')->name('save_user');
     Route::post('/user/update/{id}','UserController@update')->name('edit_user');
+    Route::post('/user/password/update/{id}','UserController@change_password')->name('change_password');
     
+
+    //Currencies
+    Route::get('/currencies','CurrencyController@index')->name('currencies');
+    Route::post('/currency/save','CurrencyController@store')->name('save_currency');
+    Route::post('/currency/update/{id}','CurrencyController@update')->name('edit_currency');
+
+    //Card Types
+    Route::get('/card/types','CardTypeController@index')->name('card_types');
+    Route::post('/card/types/save','CardTypeController@store')->name('save_card_type');
+    Route::post('/card/types/update/{id}','CardTypeController@update')->name('edit_card_type');
+
+
+    //Banks
+    Route::get('/banks','BankController@index')->name('banks');
+    Route::post('/bank/save','BankController@store')->name('save_bank');
+    Route::post('/bank/update/{id}','BankController@update')->name('edit_bank');
+    Route::get('/bank/delete/{id}','BankController@destory')->name('delete_bank');
+    Route::get('/bank/restore/{id}','BankController@restore')->name('restore_bank');
+    
+
+    //Bank Locations
+    Route::get('/bank/{id}/locations','BankLocationController@index')->name('bank_locations');
+    Route::post('/bank/location/save','BankLocationController@store')->name('save_bank_location');
+    Route::post('/bank/location/update/{id}','BankLocationController@update')->name('edit_bank_location');
+    Route::get('/bank/location/delete/{id}','BankLocationController@destory')->name('delete_bank_location');
+    Route::get('/bank/location/restore/{id}','BankLocationController@restore')->name('restore_bank_location'); 
 
 });
