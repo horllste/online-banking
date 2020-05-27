@@ -24,7 +24,7 @@ class MessageController extends Controller
         
         $users = User::role('customer-care')->get();
 
-        if( Auth::user()->role('System-Admin') ){
+        if( Auth::user()->hasRole('System-Admin') ){
             $users = User::get();
         }
 

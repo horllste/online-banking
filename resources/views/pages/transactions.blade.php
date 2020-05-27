@@ -38,7 +38,7 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-5 text-right">
                                                     @if(!empty($bankAccount->bank->picture))
-                                                        <img src="{{ $bankAccount->bank->picture }}" alt="{{ $bankAccount->bank->name }}" class="rounded-circle bg-theme" width="50" height="50">
+                                                        <img src="{{ $bankAccount->bank->picture }}" alt="{{ $bankAccount->bank->name }}" class="rounded-circle" width="50" height="50">
                                                     @endif
                     
                                                     <br/>

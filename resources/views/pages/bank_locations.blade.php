@@ -105,7 +105,7 @@
         <form action="{{ route('save_bank_location') }}" method="POST" >
             
             @csrf
-            <input type="hidden" value="{{ $bankLocations[0]->bank->id }}" name="bank_id" />
+            <input type="hidden" value="{{ $bank->id }}" name="bank_id" />
 
             <div class="modal-content">
             <div class="modal-header">

@@ -16,9 +16,10 @@ class BankLocationController extends Controller
 
     public function index(Request $request, $id){
         
+        $bank = Bank::find($id);
         $bankLocations = BankLocation::withTrashed()->with('bank','currency')->where('bank_id', $id)->paginate(20);
         $currencies = Currency::get();
-        return view('pages.bank_locations' , compact('bankLocations', 'currencies'));
+        return view('pages.bank_locations' , compact('bankLocations', 'currencies', 'bank'));
 
     }
 
