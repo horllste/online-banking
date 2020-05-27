@@ -44,8 +44,8 @@ Route::post('/set/password','Auth\AuthController@set_account_password')->name('s
 
 Route::group(array('middleware' => 'auth'), function(){
 
-    Route::get('/dashboard','DashboardController@index');
-    Route::get('/','DashboardController@index')->name('dashboard');
+    Route::get('/dashboard','DashBoardController@index');
+    Route::get('/','DashBoardController@index')->name('dashboard');
 
     //Bank Account Management
     Route::get('/accounts','BankAccountController@index')->name('accounts');
